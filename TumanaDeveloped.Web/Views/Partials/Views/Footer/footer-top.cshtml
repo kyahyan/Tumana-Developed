@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    var home = Model.AncestorOrSelf<Home>();
+    var imageCropper = home.Value<ImageCropperValue>
+             ("footerLogoImage");
+    var footerlogo = imageCropper.Src + imageCropper.GetCropUrl("Default");
+}
+
+<div class="footer-top">
+    <div class="ewds-container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-9">
+                <div class="logo"><img src="@footerlogo" alt="@home.Value("footerLogoAlt")"></div>
+                <p class="website-introduce">
+                   @home.Value("footerIntroduce")
+                </p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-5 col-lg-3">
+                <h5 class="footer-title">Quick link</h5>
+                <ul class="footer-links_group inline-block">
+                    @foreach (var page in home.Children.Where(w => w.IsVisible()))
+                    {
+                        <li><a class="footer-link" href="@page.Url">@page.Name</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

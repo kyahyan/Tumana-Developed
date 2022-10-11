@@ -1,0 +1,84 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<TumanaDeveloped.Core.ViewModel.LoginViewModel>
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    var myUser = System.Web.Security.Membership.GetUser();
+
+
+}
+
+@if (Umbraco.MemberIsLoggedOn())
+{
+
+    if (myUser != null)
+    {
+     
+        <div class="page-header_team text-center" style="background-image: url('../images/pages/team/chairman.png'); padding: 150px 0; background-repeat: no-repeat; background-position: left bottom; background-size: 355px;">
+            <div class="ewds-container">
+                <div class="content">
+                    <h1 class="h1">@myUser.UserName</h1>
+                    <p class="p">@myUser.Email</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    }
+
+}
+else
+{
+
+
+
+
+    <section class="event">
+        <div class="ewds-container">
+            <div class="row no-gutters">
+                <div class="col-12">
+                    <div class="events-search">
+                        <h1 class="h1">Login</h1>
+                        @using (Html.BeginUmbracoForm<TumanaDeveloped.Core.Controller.LoginController>("HandleLogin", null, new { @class = "events-search_box" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+
+
+                            <div class="row align-items-end">
+                                <div class="col-12 col-md-9">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            @Html.LabelFor(m => m.Username, new { @class = "" })
+                                            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "input-form" })
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            @Html.LabelFor(m => m.Password, new { @class = "" })
+                                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "input-form" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    @Html.HiddenFor(m => m.RedirectUrl)
+                                    <button class="btn-blue" type="submit" value="Login">Submit</button>
+                                </div>
+
+                                <a class="text-muted mt-5 pl-3" href="/forgotten-password/">Forgot Password?</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+}

@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.CustomPage>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+
+ <section class="feature-list">
+      <div class="ewds-container">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-header text-center">
+              <h1 class="h1">@Model.Name</h1> </div>
+          </div>
+          <div class="col-12">
+            <div class="feature-list-section heading-typo_block">
+              <h1 class="heading mb-15">@Model.Value("contentTitle")</h1>
+              <p class="p-16 mb-50">@Html.GetGridHtml(Model, "content")
+              </p>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>

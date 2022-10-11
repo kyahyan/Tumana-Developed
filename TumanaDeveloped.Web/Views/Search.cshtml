@@ -1,0 +1,96 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Search>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var searchQuery = Request.QueryString["query"];
+    IEnumerable<PublishedSearchResult> searchResults;
+    var resultsCount = 0;
+
+
+    if (!string.IsNullOrEmpty(searchQuery))
+    {
+        searchResults = Umbraco.ContentQuery.Search(searchQuery, string.Empty, "InternalIndex")
+                            .Where(w => w.Content.IsDocumentType("issuance"));
+
+        resultsCount = searchResults != null && searchResults.Any() ? searchResults.Count() : 0;
+
+
+    }
+    else
+    {
+        searchResults = null;
+
+    }
+}
+
+<section class="event">
+    <div class="ewds-container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <div class="events-search">
+                    <h1 class="h1">Search</h1>
+                        <form class="events-search_box" method="get" action="@Model.Url">
+                            <div class="row align-items-end">
+                                <div class="col-12 col-md-9">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="text" class="input-form" placeholder="Search ... " name="query" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <button class="btn-blue" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+</div>
+                <div class="events-list">
+
+                    @if (!string.IsNullOrEmpty(searchQuery))
+                    {
+                        if (resultsCount == 0 || searchResults == null)
+                        {
+                            <text>
+
+                                <h3 class="h3">NO RESULT were found for @searchQuery</h3>
+                            </text>
+                        }
+                        else
+                        {
+                            <text>
+                                <h3 class="h3"> We found @resultsCount result(s).</h3>
+                            </text>
+
+
+                            <div class="row">
+                                @foreach (var result in searchResults)
+                                {
+
+
+
+                                <div class="col-12 col-sm-6 col-lg-4">
+                                    <div class="event_block">
+                                        <div class="event__content">
+                                            <a class="event--title" href="@result.Content.Url">@result.Content.Name</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                }
+                            </div>
+
+
+                                }
+                                }
+
+
+
+                            </div>
+                        </div>
+        </div>
+    </div>
+</section>
+
+

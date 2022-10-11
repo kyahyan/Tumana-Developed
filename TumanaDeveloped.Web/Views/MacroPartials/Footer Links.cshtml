@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+    var links = Model.Content.Value<IEnumerable<IPublishedElement>>("linkNestedContent");
+
+}
+
+@if(links != null)
+{
+
+@foreach(var lnk in links)
+{
+    @lnk.Value("linkText")
+}
+
+}

@@ -1,0 +1,50 @@
+﻿@model TumanaDeveloped.Core.ViewModel.ContactFormViewModel
+@using TumanaDeveloped.Core.Controller
+@using System.Web.Mvc.Html
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+
+@if ((string)TempData["status"] == "OK")
+{
+        <text>
+        <div class="ewds-container">
+                <div class="section-header-style-1 text-center">
+                   
+                            <h1 class="h1"> <i class="fas fa-thumbs-up"></i></h1>
+                            <h6 class="h6">Thank You</h6>
+                </div>
+        </div>
+        </text>
+            }
+            else
+            {
+            using (Html.BeginUmbracoForm<ContactController>
+                ("HandleContactForm"))
+                {
+                @Html.ValidationSummary()
+                @Html.AntiForgeryToken()
+
+                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                @Html.TextBoxFor(m => m.Name, new { @class = "input-form", placeholder = "Your Name", maxlegth = "80" })
+
+                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-form", placeholder = "Your Email", maxlegth = "255" })
+
+                <span class="field-validation-valid"></span>
+                @Html.TextBoxFor(m => m.Subject, new { @class = "input-form", placeholder = "Subject", maxlegth = "255" })
+
+                <span class="field-validation-valid"></span>
+                @Html.TextAreaFor(m => m.Comment, new { @class = "textarea-form", placeholder = "Message", maxlegth = "500" })
+                <button class="btn-outline-green" type="submit">Send</button>
+
+                }
+                }
+
+
+
+
+

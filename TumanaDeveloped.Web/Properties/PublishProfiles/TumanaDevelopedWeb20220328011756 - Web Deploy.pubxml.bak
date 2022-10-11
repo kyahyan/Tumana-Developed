@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <WebPublishMethod>MSDeploy</WebPublishMethod>
+    <ResourceId>/subscriptions/702420ef-e31a-43f6-9484-7066c109d6b1/resourceGroups/TumanaMarikinaRG/providers/Microsoft.Web/sites/TumanaDevelopedWeb20220328011756</ResourceId>
+    <ResourceGroup>TumanaMarikinaRG</ResourceGroup>
+    <PublishProvider>AzureWebSite</PublishProvider>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <SiteUrlToLaunchAfterPublish>https://tumanadevelopedweb20220328011756.azurewebsites.net</SiteUrlToLaunchAfterPublish>
+    <LaunchSiteAfterPublish>true</LaunchSiteAfterPublish>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
+    <MSDeployServiceURL>tumanadevelopedweb20220328011756.scm.azurewebsites.net:443</MSDeployServiceURL>
+    <DeployIisAppPath>TumanaDevelopedWeb20220328011756</DeployIisAppPath>
+    <RemoteSitePhysicalPath />
+    <SkipExtraFilesOnServer>true</SkipExtraFilesOnServer>
+    <InstallAspNetCoreSiteExtension>false</InstallAspNetCoreSiteExtension>
+    <MSDeployPublishMethod>WMSVC</MSDeployPublishMethod>
+    <EnableMSDeployBackup>true</EnableMSDeployBackup>
+    <EnableMsDeployAppOffline>false</EnableMsDeployAppOffline>
+    <UserName>$TumanaDevelopedWeb20220328011756</UserName>
+    <_SavePWD>true</_SavePWD>
+    <_DestinationType>AzureWebSite</_DestinationType>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="umbracoDbDSN" Order="1" Enabled="False">
+          <Destination Path="Data Source=tcp:ewdsdbserver.database.windows.net,1433;Initial Catalog=TumanaMarikinaDB;Persist Security Info=False;User ID=ewdsadmin;Password=P@ssw0rd001;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" Name="" />
+          <Object Type="DbDacFx">
+            <PreSource Path="Data Source=tcp:ewdsdbserver.database.windows.net,1433;Initial Catalog=TumanaMarikinaDB;Persist Security Info=False;User ID=ewdsadmin;Password=P@ssw0rd001;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" includeData="False" />
+            <Source Path="$(IntermediateOutputPath)AutoScripts\umbracoDbDSN_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+          </Object>
+          <UpdateFrom Type="Web.Config">
+            <Source MatchValue="Server=tcp:ewdsdbserver.database.windows.net,1433;Initial Catalog=TumanaMarikinaDB;Persist Security Info=False;User ID=ewdsadmin;Password=P@ssw0rd001;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" MatchAttributes="$(UpdateFromConnectionStringAttributes)" />
+          </UpdateFrom>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <MSDeployParameterValue Include="umbracoDbDSN-Web.config Connection String">
+      <ParameterValue>data source=tcp:ewdsdbserver.database.windows.net,1433;initial catalog=TumanaMarikinaDB;persist security info=False;user id=ewdsadmin;password=P@ssw0rd001;connect timeout=30;encrypt=True;trustservercertificate=False;MultipleActiveResultSets=False</ParameterValue>
+    </MSDeployParameterValue>
+  </ItemGroup>
+  <Target Name="StopUmbracoFromPublishingAppPlugins" AfterTargets="AddUmbracoFilesToOutput">
+    <ItemGroup>
+    <FilesForPackagingFromProject Remove=".\Umbraco\**\*.*"/>
+    </ItemGroup>
+  </Target>
+</Project>

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cd60e6b2-a4c4-4017-973d-0c2364f461f5": {
+      "ProjectGuid": "cd60e6b2-a4c4-4017-973d-0c2364f461f5",
+      "DisplayName": "TumanaDeveloped.Web",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "79a228d7-5407-4df0-b582-0789a30965e8": {
+      "ProjectGuid": "79a228d7-5407-4df0-b582-0789a30965e8",
+      "DisplayName": "TumanaDeveloped.Core",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

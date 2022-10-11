@@ -1,0 +1,123 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Article>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+
+    var imageCroppers1 = Model.Value<ImageCropperValue>
+                      ("articleImage");
+    var articleimage = imageCroppers1.Src + imageCroppers1.GetCropUrl("Default");
+
+
+   var articleimages = Model.Value<IEnumerable<IPublishedElement>>("imageList");
+
+    var articleUrl = Model.Url(null, UrlMode.Absolute);
+    var siteUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+
+
+    var relatedArticles = Model.Value<IList<IPublishedContent>>("articleRelatedContent");
+
+
+}
+
+
+@section head
+{
+    <meta property="og:title" content="@Model.Name" />
+    <meta property="og:description" content="@Model.Value("articleLeadIn")" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="@siteUrl@Model.Value("articleImage")" />
+}
+
+
+
+<div class="page-header_blog" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url('@articleimage');">
+    <div class="ewds-container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 text-center">
+                <h1>@Model.Value("articleLeadIn")</h1>
+                <div class="blog-info">
+                    <p class="author"><i class="icon_profile"></i><span>@Model.CreatorName</span></p>
+                    <p class="date"><i class="icon_calendar"></i><span>@Model.CreateDate.ToString("D")</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="blog">
+    <div class="ewds-container">
+        <div class="blog-detail">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12"><a id="sidebar-opener" href="#"> <i class="icon_menu"></i>Open sidebar</a></div>
+                        <div class="col-12 col-lg-8">
+                            <div class="blog-detail_content">
+
+                              
+                                <p class="p-16 mb-30">@Model.Value("articleContent")</p>
+                                    
+                                @if(articleimages != null)
+                                {
+                                <div class="image-group">
+                                    <div class="image-group_wrapper">
+                                        @foreach (var item in articleimages)
+                                        {
+                                            var image = item.Value<IPublishedContent>("articleUploadImages");
+                                            <img class="img-fluid" src="@image.Url()" alt="">
+                                        }
+                                    </div>
+                                    <div class="image-group_control"></div>
+                                </div>
+                                }
+                               
+                            
+                            </div>
+                            <div class="blog-detail_footer">
+                                <div class="tag">
+                                    <h3>Tag:</h3>
+                                    <div class="items-group tag-group">
+                                        @foreach (var tag in Model.GetProperty("articleCategories").Value<IEnumerable<string>>())
+                                        {
+                                            <a> @tag</a>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="share">
+                                    <h3>Share</h3>
+                                    <div class="social-group">
+                                        <a class="fab fa-facebook-f" href="https://www.facebook.com/sharer/sharer.php?u=@articleUrl"></a>
+                                        <a class="fab fa-twitter" href="https://twitter.com/intent/tweet?text=@Model.Name&amp;url=@articleUrl"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="blog_sidebar ml-auto" id="sidebar">
+                                <div class="sidebar_section">
+                                    <div class="feature-news">
+                                        <h3 class="sidebar-title">Related Article</h3>
+                                        @if (relatedArticles != null && relatedArticles.Count > 0)
+                                        {
+
+                                            foreach (var article in relatedArticles)
+                                            {
+
+                                                <div class="feature-news_block">
+                                                    <p class="date"> <i class="far fa-calendar"></i>@article.Value("articleDate")</p><a class="title" href="@article.Url">@article.Value("articleLeadIn")</a>
+                                                    <p class="author">by<span>@article.Value("articleAuthor")</span></p>
+                                                </div>
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

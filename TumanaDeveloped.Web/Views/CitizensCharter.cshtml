@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.CitizensCharter>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    
+    var selection = Umbraco.Content(Guid.Parse("c2c765be-1745-49ae-81dc-416d3623935c"))
+    .ChildrenOfType("issuance")
+    .Where(x => x.IsVisible());
+}
+
+
+
+<section class="services">
+    <div class="ewds-container">
+        <div class="page-header text-center">
+            <h1 class="h1">Citizen Charter</h1>
+            </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="services-group">
+                    <div class="row">
+                        @foreach (var item in selection)
+                        	{
+                        		<div class="col-12 col-sm-6 col-lg-4">
+                            <div class="service_block">
+                                <div class="service-icon"><img src="../images/homepage3/ic-1.svg" alt="icon"></div>
+                                <div class="service-content">
+                                    <h5 class="h5 service-content--title">@item.Name</h5>
+                                    <p class="p h5 service-content--pragraph">@item.Value("description")</p><a href="@item.Url">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        	}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

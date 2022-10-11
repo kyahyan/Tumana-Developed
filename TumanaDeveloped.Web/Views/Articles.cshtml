@@ -1,0 +1,155 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Articles>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+
+
+    //var article = Umbraco.Content(Guid.Parse("15c55c50-8cf3-4056-8085-d3e790c8b445"))
+    //.ChildrenOfType("article")
+    //.Where(x => x.IsVisible())
+    //.OrderByDescending(x => x.CreateDate)
+    //.Take(5);
+
+
+
+    var articles = Umbraco.ContentAtRoot().DescendantsOrSelfOfType("articles").FirstOrDefault();
+
+    var news = articles.Children;
+
+    if (!string.IsNullOrEmpty(Request.QueryString["cat"]))
+    {
+
+        news = articles.Children.Where(w => w.Value<string[]>("articleCategories").Contains(Request.QueryString["cat"]));
+
+    }
+
+
+    const int pageSize = 6;
+
+    var numPages = (int)Math.Ceiling((double)news.Count() / (double)pageSize);
+    var selectedPage = 1;
+
+    if(!string.IsNullOrEmpty(Request.QueryString["page"]))
+    {
+        int.TryParse(Request.QueryString["page"], out selectedPage);
+
+        if(selectedPage <= 0 || selectedPage > numPages)
+        {
+            selectedPage = 1;
+        }
+
+    }
+
+
+    news = news.Skip((selectedPage - 1) * pageSize).Take(pageSize).ToList();
+
+
+
+    var tags = articles.Children.Select(w => w.Value<string[]>("articleCategories"));
+    var categoriesList = new List<string>();
+    foreach(var tagArray in tags)
+    {
+        foreach (var tag in tagArray)
+        {
+            if(!categoriesList.Contains(tag))
+            {
+                categoriesList.Add(tag);
+            }
+        }
+
+    }
+}
+
+<section class="blog">
+    <div class="ewds-container">
+        <div class="page-header text-center">
+            <h1 class="h1">@Model.Name</h1>
+        </div>
+        <div class="blog-grid-sidebar">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <a class="mb-30" id="sidebar-opener" href="#"> <i class="icon_menu"></i>Open sidebar</a>
+                            <div class="blog-default">
+                                <div class="blog-default_group">
+                                    <div class="row">
+
+                                        @foreach (var article in news.OrderByDescending(o => o.Value<DateTime>("articleDate")))
+                                        {
+
+                                            var imageCroppers2 = article.Value<ImageCropperValue>
+                                                          ("articleImage");
+                                            var relatedimage = imageCroppers2.Src + imageCroppers2.GetCropUrl("Thumb");
+
+
+                                            <div class="col-12 col-sm-6">
+                                                <div class="insight-regular">
+                                                    <div class="insight-img">
+                                                        <img src="@relatedimage" alt="@article.Name">
+                                                        <p class="date">@article.CreateDate.ToString("D")</p>
+                                                    </div>
+                                                    <div class="insight-content">
+                                                        <a href="@article.Url()">@article.Value("articleLeadIn")</a>
+                                                        <p class="author">by<span>@article.CreatorName</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                @if (numPages > 1)
+                                {
+                            <div class="pagination">
+
+                                <a aria-current="@(selectedPage <= 1 ? "disabled" : "")" class="pagenumber " href="@(Model.Url + "?page=" + (selectedPage - 1))" ><span>Previous</span></a>
+                                @for (int i = 1; i <= numPages; i++)
+                                {
+                                    <a class="pagenumber @(selectedPage == i ? "active" : "")" href="@(Model.Url + "?page=" + i)"><span>@i</span></a>
+
+                                }
+                               
+                                <a aria-current="@(selectedPage >= numPages ? "disabled" : "")" class="pagenumber" href="@(Model.Url + "?page=" + (selectedPage + 1))" ><span>Next</span></a>
+
+
+                            </div>
+
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="blog_sidebar" id="sidebar">
+                               
+                                <div class="sidebar_section">
+                                    <div class="blog-categories">
+                                        <h3 class="sidebar-title">Categories</h3>
+                                        @*<a href="@Model.Url">Clear</a>*@
+                                        <ul>
+
+                                            @foreach (var category in categoriesList.OrderBy(o => o))
+                                            {
+                                                var activleClass = "";
+                                                if(category == Request.QueryString["cat"])
+                                                    {
+                                                    activleClass = "active";
+                                                    }
+                                                <li>
+                                                    <a class="category-link @activleClass" href="@Model.Url?cat=@category">
+                                                        <span class="name">@category</span>
+                                                    </a>
+                                                </li>
+
+                                            }
+                                         </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

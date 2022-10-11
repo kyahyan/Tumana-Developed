@@ -1,0 +1,151 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.OurBarangay>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+
+    var imageCropper = Model.Value<ImageCropperValue>
+              ("tumanaLogo");
+    var logo = imageCropper.Src + imageCropper.GetCropUrl("Default");
+
+    var imageCropper_vision = Model.Value<ImageCropperValue>
+              ("visionImage");
+    var visionImage = imageCropper_vision.Src + imageCropper_vision.GetCropUrl("Default");
+
+    var imageCropper_mission = Model.Value<ImageCropperValue>
+              ("missionImage");
+    var missionImage = imageCropper_mission.Src + imageCropper_mission.GetCropUrl("Default");
+    
+    var imageCropper_objective = Model.Value<ImageCropperValue>
+              ("objectiveImage");
+    var objectiveImage = imageCropper_objective.Src + imageCropper_objective.GetCropUrl("Default");
+
+}
+
+<section class="h3-section1">
+    <div class="ewds-container">
+        <div class="layout-2col-ti">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="layout-2col-ti_left">
+                        <div class="benifit-illus" data-aos="fade-right"><img src="@logo" alt=""></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="layout-2col-ti_right">
+                        <div class="section-header-style-3 text-center text-md-left" data-aos="fade-left">
+                            <h1 class="h1">@Model.Value("title")</h1>
+                            <h6 class="h6">@Model.Value("subtitle")</h6>
+                            <p class="p">@Model.Value("context")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="h3-section3">
+    <div class="data-proof">
+        <div class="ewds-container">
+            <div class="section-header-style-1 text-center">
+                <h1 class="h1">As of 2022</h1>
+            </div>
+            <div class="row">
+                <div class="col-6 col-sm-3">
+                    <div class="data-group text-center mb30-md">
+                        <div class="data-content">
+                            <h1 class="data-number heading numscroller" data-min="1" data-max="16500" data-delay="5" data-increment="50">16500</h1>
+                            <h5 class="data-type h5">Registered Voters</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="data-group text-center mb30-md">
+                        <div class="data-content">
+                            <h1 class="data-number heading numscroller" data-min="1" data-max="42000" data-delay="5" data-increment="80">42000</h1>
+                            <h5 class="data-type h5">Population</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="data-group text-center">
+                        <div class="data-content">
+                            <h1 class="data-number heading numscroller" data-min="1" data-max="35000" data-delay="2" data-increment="70">35000</h1>
+                            <h5 class="data-type h5">House Holder</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="data-group text-center">
+                        <div class="data-content">
+                            <h1 class="data-number heading numscroller" data-min="1" data-max="181" data-delay="5" data-increment="5">181</h1>
+                            <h5 class="data-type h5">Land Area (Hectares)</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="h3-section2">
+    <div class="ewds-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-header-style-2 text-center">
+                    <h1 class="h1">@Model.Value("floodHazardTitle")</h1>
+                    <p class="p">@Model.Value("floodHazardContext")</p>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="our-approach">
+    <div class="ewds-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="approach-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="approach-content_group">
+                                <div class="row justify-content-between">
+                                    <div class="col-12 col-md-5 order-2 order-md-1">
+                                        <h1>@Model.Value("visionTitle")</h1>
+                                        <p>@Model.Value("visionContext")</p>
+
+                                    </div>
+                                    <div class="col-12 col-md-6 order-1 order-md-2"><img class="img-fluid" src="@visionImage" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="approach-content_group">
+                                <div class="row justify-content-between">
+                                    <div class="col-12 col-md-6"><img class="img-fluid" src="@missionImage" alt=""></div>
+                                    <div class="col-12 col-md-5">
+                                        <h1>@Model.Value("missionTitle")</h1>
+                                        <p>@Model.Value("missionContext")</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="approach-content_group">
+                                <div class="row justify-content-between">
+                                    <div class="col-12 col-md-5 order-2 order-md-1">
+                                        <h1 class="">@Model.Value("objectiveTitle")</h1>
+                                        <p class=" ">@Model.Value("objectiveContext")</p>
+                                        @Model.Value("objectiveList")
+                                     
+                                    </div>
+                                    <div class="col-12 col-md-6 order-1 order-md-2"><img class="img-fluid" src="@objectiveImage" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

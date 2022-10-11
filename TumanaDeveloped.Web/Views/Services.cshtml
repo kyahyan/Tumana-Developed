@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Services>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+}
+
+<section class="error-404">
+    <div class="ewds-container text-center">
+        <div class="section-header-style-2">
+            <h1 class="h1">Sorry, Some Thing Went Wrong!</h1>
+            <p class="p">Oops! This page you looking for was removed, renamed, under maintenance or doesn't exist</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6"><img class="img-fluid" src="../images/pages/404/error.svg" alt="error image"></div>
+            <div class="col-12 col-md-8">
+                <h3 class="solution--title">Please go to homepage or enter url for checking</h3>
+               
+                    <a class="btn-blue" href="/">Back To Home<i class="arrow_right"></i></a>
+               
+            </div>
+        </div>
+    </div>
+</section>

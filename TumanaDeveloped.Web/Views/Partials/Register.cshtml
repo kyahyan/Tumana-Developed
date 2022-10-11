@@ -1,0 +1,93 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<TumanaDeveloped.Core.ViewModel.RegisterViewModel>
+@using TumanaDeveloped.Core.Controller
+
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+}
+
+
+
+
+    <section class="shop">
+        <div class="ewds-container">
+            <div class="page-header text-center">
+                <h1 class="h1">Register</h1>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12">
+                    <div class="shop-checkout">
+                        <div class="row">
+                            <div class="col-12">
+
+                                @if ((string)TempData["status"] == "OK")
+                                {
+                                    <text>
+                                       
+                                                <h1 class="h1"> <i class="fas fa-thumbs-up"></i></h1>
+                                                <h6 class="h6">Thanks for your registration, please check your email for the email verification link.</h6>
+                                         
+                                    </text>
+                                }
+                                else
+                                {
+                                    @Html.ValidationSummary()
+                                    using (Html.BeginUmbracoForm<RegisterController>("HandleRegister", null, new { @class = "billing-detail_form" }))
+                                    {
+                                        <div class="row">
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="col-12 col-md-6">
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.FirstName)
+                                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "input-form", @type = "text" })
+                                                    @Html.ValidationMessageFor(m => m.FirstName)
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.LastName)
+                                                    @Html.TextBoxFor(m => m.LastName, new { @class = "input-form", @type = "text" })
+                                                    @Html.ValidationMessageFor(m => m.LastName)
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-12">
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.Email)
+                                                    @Html.TextBoxFor(m => m.Email, new { @class = "input-form", @type = "email" })
+                                                    @Html.ValidationMessageFor(m => m.Email)
+                                                </div>
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.Username)
+                                                    @Html.TextBoxFor(m => m.Username, new { @class = "input-form", @type = "text" })
+                                                    @Html.ValidationMessageFor(m => m.Username)
+                                                </div>
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.Password)
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "input-form", @type = "password", @autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(m => m.Password)
+                                                </div>
+                                                <div class="input-group">
+                                                    @Html.LabelFor(m => m.ConfirmPassword)
+                                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-form", @type = "password", @autocomplete = "off" })
+                                                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <button class="btn-blue" type="submit" value="Reister" name="register-button">Register</button>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

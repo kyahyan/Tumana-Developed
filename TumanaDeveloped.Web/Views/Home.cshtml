@@ -1,0 +1,229 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Web.Models;
+@using Umbraco.Core.PropertyEditors.ValueConverters;
+@{
+    Layout = "Master.cshtml";
+
+    var citizens = Model.AncestorOrSelf<Home>();
+
+
+    var imageCroppers = Model.Value<ImageCropperValue>
+               ("bannerImage");
+    var bannerimage = imageCroppers.Src + imageCroppers.GetCropUrl("Default");
+
+    var latestarticle = Umbraco.Content(Guid.Parse("15c55c50-8cf3-4056-8085-d3e790c8b445"))
+    .ChildrenOfType("article")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate)
+    .Take(1);
+
+    var article = Umbraco.Content(Guid.Parse("15c55c50-8cf3-4056-8085-d3e790c8b445"))
+    .ChildrenOfType("article")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate)
+    .Take(5);
+}
+<section class="h2-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url('@bannerimage');">
+    <div class="ewds-container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-8">
+                <div class="banner-content">
+
+                    <h1 class="heading banner-title animated fadeInLeft">@Model.Value("bannerTitle")</h1>
+                    <h3 class="banner-subtitle animated fadeInLeft">@Model.Value("bannerSubtitle")<br>-#zifteam</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="h2-section1">
+    <div class="ewds-container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="welcome-header">
+                    <div class="section-header-style-3 text-center text-md-left">
+                        <h1 class="h1">@Model.Value("visionTitle")</h1>
+                        <h6 class="h6">@Model.Value("visionText")</h6>
+                        <h1 class="h1">@Model.Value("missionTitle")</h1>
+                        <h6 class="h6">@Model.Value("missionText")</h6>
+
+
+                        <p class="p">@Model.Value("aboutSummary")</p>
+                        <a class="btn-outline-green" href="/our-barangay/">About us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="h1-section1">
+                    <div class="h1-section-1_industry" data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
+                        <h3 class="h3">Citizens Charter</h3>
+                        <div class="industry-links">
+
+                            <ul>
+                                @foreach (var charter in citizens.Children)
+                                {
+
+                                    if (charter.Children.Any())
+                                    {
+                                        if (charter.Name == "Citizens Charter")
+                                        {
+                                            foreach (var grandChild in charter.Children)
+                                            {
+
+
+                                                <li><a class="industry-link" href="@grandChild.Url"> @grandChild.Name</a></li>
+
+                                            }
+                                        }
+                                    }
+                                }
+                            </ul>
+
+
+
+                        </div><a class="all-industries" href="/citizens-charter/">All Citizens Charter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <div class="ewds-container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-lg-9">
+                <div class="call-to-action_content text-center text-lg-left">
+                    <h3 class="h3 cta-title">@Model.Value("ctaTitle")</h3>
+                    <p class="p cta-pragraph">@Model.Value("ctasubtitle")</p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 text-lg-right text-center">
+                @{
+                    var link = Model.Value<Umbraco.Web.Models.Link>("ctabuttonlink");
+                    if (link != null)
+                    {
+                        <a class="cta-btn btn-green" href="@link.Url" target="@link.Target">@link.Name</a>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="h1-lastest-insight" data-aos="fade-in" data-aos-duration="1000">
+    <div class="ewds-container">
+        <div class="h1-lastest-insight_top">
+            <h1 class="h1">Our Latest Articles</h1><a href="/articles/">View all Articles</a>
+        </div>
+        <div class="lastest-insights">
+            <div class="row">
+                <div class="col-12 col-md-6">
+
+                    @foreach (var item in latestarticle)
+                    {
+
+                    var imageCropper = item.Value<ImageCropperValue>("articleImage");
+                    var thumbUrl = imageCropper.Src + imageCropper.GetCropUrl("Thumb");
+
+                        <div class="feature-lastest-insights">
+                            <a class="feature-lastest-insights_img" href="@item.Url"><img src="@thumbUrl" alt="lastest News image"></a>
+                            <div class="feature-lastest-insights_content">
+                                <div class="insight-public-date mb-15">
+                                    <p class="inline-block author">@item.CreatorName</p>
+                                    <p class="inline-block date">@item.CreateDate.ToString("D")</p>
+                                </div>
+                                <a class="insight-title" href="@item.Url">@item.Value("articleLeadIn")</a>
+                                <a class="btn-blue" href="https://twitter.com/intent/tweet?text=@item.Value("articleLeadIn")&amp;url=@item.Url(null, UrlMode.Absolute)">
+
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn-blue" href="https://www.facebook.com/sharer/sharer.php?u=@item.Url(null, UrlMode.Absolute)">
+
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                        }
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="list-lastest-insights_group">
+
+                        @foreach (var item in article)
+                        {
+
+                        <div class="list-lastest-insight">
+                            <div class="list-lastest-insight_content">
+                                <a class="list-insight--title" href="@item.Url">@item.Value("articleLeadIn")</a>
+                                <div class="insight-public-date">
+                                    <p class="inline-block author">@item.CreatorName</p>
+                                    <p class="inline-block date">@item.CreateDate.ToString("D")</p>
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<div class="data-part">
+        <div class="h1-section2">
+            <div class="data-proof">
+                <div class="ewds-container">
+                    <div class="row">
+                        <div class="col-6 col-sm-3">
+                            <div class="data-group text-center mb30-md">
+                                <div class="data-content">
+                                    <h1 class="data-number heading numscroller" data-min="1" data-max="13581" data-delay="5" data-increment="5">13581</h1>
+                                    <h5 class="data-type h5">Population</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="data-group text-center mb30-md">
+                                <div class="data-content">
+                                    <h1 class="data-number heading numscroller" data-min="1" data-max="10524" data-delay="5" data-increment="5">10524</h1>
+                                    <h5 class="data-type h5">Vacinated</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="data-group text-center">
+                                <div class="data-content">
+                                    <h1 class="data-number heading numscroller" data-min="1" data-max="20" data-delay="2" data-increment="3">20<span>+</span></h1>
+                                    <h5 class="data-type h5">Business Parners</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="data-group text-center">
+                                <div class="data-content">
+                                    <h1 class="data-number heading numscroller" data-min="1" data-max="1920" data-delay="5" data-increment="5">1920</h1>
+                                    <h5 class="data-type h5">Happy Clients</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

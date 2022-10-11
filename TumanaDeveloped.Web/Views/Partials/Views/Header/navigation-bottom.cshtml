@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var home = Model.AncestorOrSelf<Home>();
+}
+    <div class="header-bottom">
+        <div class="ewds-container">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-1 col-lg-8">
+                       <div class="navigation">
+                           @*Here navigation*@
+                           <ul>
+                               <li class="navigtion-item"><a class="navigation-link" href="/">Home</a></li>
+                               @foreach (var page in home.Children.Where(w => w.IsVisible()))
+                               {
+                                   <li class="navigtion-item"><a class="navigation-link" href="@page.Url">@page.Name</a></li>
+                               }
+                           </ul>
+                        </div>
+                </div>
+                <div class="col-11 col-lg-4">
+                    <div class="page-function_block d-flex align-items-center justify-content-end">
+                        <div class="page-function">
+                            <div class="function-btn inline-block">
+                                @*<a href="#" id="search"><i class="icon_search"></i></a>*@
+                                <a href="/search/"><i class="icon_search"></i></a>
+                            </div>
+                            <div class="function-btn inline-block">
+                                <a href="#" id="open-menu-sidebar"><i class="icon_menu"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

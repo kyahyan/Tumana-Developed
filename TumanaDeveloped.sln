@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TumanaDeveloped.Web", "TumanaDeveloped.Web\TumanaDeveloped.Web.csproj", "{CD60E6B2-A4C4-4017-973D-0C2364F461F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TumanaDeveloped.Core", "TumanaDeveloped.Core\TumanaDeveloped.Core.csproj", "{79A228D7-5407-4DF0-B582-0789A30965E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		UAT|Any CPU = UAT|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{CD60E6B2-A4C4-4017-973D-0C2364F461F5}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{79A228D7-5407-4DF0-B582-0789A30965E8}.UAT|Any CPU.Build.0 = UAT|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEE3751A-04CF-473F-83E3-F6F2C9ACDEEE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?mny03n');
+  src:  url('../fonts/icomoon.eot?mny03n#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?mny03n') format('truetype'),
+    url('../fonts/icomoon.woff?mny03n') format('woff'),
+    url('../fonts/icomoon.svg?mny03n#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="az-"], [class*=" az-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.az-icon-1:before {
+  content: "\e900";
+}
+.az-icon-2:before {
+  content: "\e901";
+}
+.az-icon-3:before {
+  content: "\e902";
+}
+.az-icon-4:before {
+  content: "\e903";
+}
+.az-icon-5:before {
+  content: "\e904";
+}
+.az-icon-6:before {
+  content: "\e905";
+}
+.az-icon-7:before {
+  content: "\e906";
+}
+.az-icon-8:before {
+  content: "\e907";
+}
+.az-icon-9:before {
+  content: "\e908";
+}
+.az-icon-10:before {
+  content: "\e909";
+}
+.az-icon-11:before {
+  content: "\e90a";
+}
+.az-icon-12:before {
+  content: "\e90b";
+}
+.az-icon-13:before {
+  content: "\e90c";
+}

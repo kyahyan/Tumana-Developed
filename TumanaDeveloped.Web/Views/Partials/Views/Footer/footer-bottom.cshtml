@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.Models
+
+@{
+
+    var home = Model.AncestorOrSelf<Home>();
+
+    var flink = home.Value<IEnumerable<IPublishedElement>>("linkNestedContent");
+
+    DateTime now = DateTime.Today;
+}
+@if (flink != null)
+{
+    <div class="footer-bottom">
+        <div class="ewds-container">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <p class="copyright">&copy @now.ToString("yyyy") Barangay Tumana. All rights reserved.</p>
+                </div>
+                <div class="col-4">
+                    <div class="footer-socials text-right">
+                        @foreach (var lnk in flink)
+                        {
+                            //var url = lnk.Value<Link>("linkUrl");
+                            var moreLink = lnk.Value<Umbraco.Web.Models.Link>("linkUrl");
+
+                            if (moreLink != null)
+                            {
+
+                                <a class="@lnk.Value("linkIcon")" href="@moreLink.Url"></a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

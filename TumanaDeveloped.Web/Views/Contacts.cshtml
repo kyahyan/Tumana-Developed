@@ -1,0 +1,69 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Contacts>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section class="contact-us">
+    <div class="contact-infomation">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964.9792716816285!2d121.09989962923161!3d14.660646596801163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b9b8f725aaf5%3A0x4290307cd9fd645a!2sBarangay%20Tumana%20Hall!5e0!3m2!1sen!2sph!4v1648148950775!5m2!1sen!2sph" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        <div class="ewds-container">
+            <div class="infomation-box_wrapper">
+                <div class="infomation-box">
+                    <h5 class="mb-20 h5">Infomation</h5>
+                    <ul class="ul-16">
+                        <li> <i class="fas fa-phone-alt"></i>(+632) 477-3817</li>
+                        <li> <i class="fas fa-map-marker-alt"></i>Donya Petra Road 1, <br>Tumana Marikina, Philippines</li>
+                        <li> <i class="fas fa-envelope"></i>info@tumanamarikina.com</li>
+                    </ul>
+                    <h5 class="mb-20 h5">Office Hours</h5>
+                    <ul class="opening-hours">
+                        <li>Monday - Friday<span>07:00 - 17:00</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-content">
+        <div class="ewds-container">
+            <div class="layout-2col-ti">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <div class="layout-2col-ti_left">
+                            <div class="contact-content_left">
+                                <div class="section-header-style-2">
+                                    <h1 class="h1">Let me help you</h1>
+                                    <p class="p-16">If you have any questions, please fill in the box below, We will reply to you as soon as possible</p>
+                                       
+                                       
+                                        @Html.GetGridHtml(Model, "pageContent")
+                                                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="layout-2col-ti_right">
+                            <div class="contact-content_right">
+                                <div class="section-header-style-2">
+                                    <h1 class="h1">
+                                        Rescue 161
+                                    </h1>
+                                    <p class="p-16 mb-20">Public Service Reminder of Marikina City</p>
+                                    <h5 class="h5 mb-30">Telephone Numbers:</h5>
+                                    <h3 class="h3">8646-2436 TO 38</h3>
+                                    <h3 class="h3">8646-0427</h3>
+                                    <h3 class="h3">8646-1631</h3>
+                                    <h3 class="h3">0928-5593-341 (Smart)</h3>
+                                    <h3 class="h3">0917-5842-168 (Globe)</h3>
+
+
+                                </div>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
