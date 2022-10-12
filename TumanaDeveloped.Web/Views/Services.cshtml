@@ -2,22 +2,52 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = "Master.cshtml";
+    
+     var services = Umbraco.ContentAtRoot().DescendantsOrSelfOfType("services").FirstOrDefault();
+
+    var serviceChildren = services.Children;
 }
 
-<section class="error-404">
-    <div class="ewds-container text-center">
-        <div class="section-header-style-2">
-            <h1 class="h1">Sorry, Some Thing Went Wrong!</h1>
-            <p class="p">Oops! This page you looking for was removed, renamed, under maintenance or doesn't exist</p>
+ 
+<section class="blog">
+    <div class="ewds-container">
+        <div class="page-header text-center">
+            <h1 class="h1">@Model.Name</h1>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6"><img class="img-fluid" src="../images/pages/404/error.svg" alt="error image"></div>
-            <div class="col-12 col-md-8">
-                <h3 class="solution--title">Please go to homepage or enter url for checking</h3>
-               
-                    <a class="btn-blue" href="/">Back To Home<i class="arrow_right"></i></a>
-               
+        <div class="blog-grid-sidebar">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <a class="mb-30" id="sidebar-opener" href="#"> <i class="icon_menu"></i>Open sidebar</a>
+                            <div class="blog-default">
+                                <div class="blog-default_group">
+                                    <div class="row">
+
+                                        @foreach (var service in serviceChildren.OrderByDescending(o => o.Value<DateTime>("serviceDate")))
+                                        {
+
+                                        
+
+                                            <div class="col-12 col-sm-6">
+                                                <div class="insight-regular">
+                                                    <div class="insight-img">
+                                                        <img src="@service.Value("ServiceImage")" alt="@service.Name">
+                                                        <p class="date">@service.CreateDate.ToString("D")</p>
+                                                    </div>
+                                                    <div class="insight-content">
+                                                        <a href="@service.Url()">@service.Value("ServiceLeadIn")</a>
+                                                        <p class="author">by<span>@service.CreatorName</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+                                

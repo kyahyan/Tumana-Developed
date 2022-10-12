@@ -17,8 +17,8 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b9d0d51bc9bae7aa")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.22")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "889c30bfb7d86872")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedModels
 {
@@ -441,7 +441,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -474,7 +474,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -507,7 +507,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -888,7 +888,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1124,7 +1124,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1331,7 +1331,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1364,7 +1364,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1397,7 +1397,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1430,7 +1430,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1463,7 +1463,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1496,7 +1496,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -1977,7 +1977,7 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Umbraco Navi Hide: If this is checked then the page won't appear in the menu
+		/// Umbraco Navi Hide
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("umbracoNaviHide")]
@@ -2198,6 +2198,95 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+	}
+
+	/// <summary>Service</summary>
+	[PublishedModel("service")]
+	public partial class Service : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new const string ModelTypeAlias = "service";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Service, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public Service(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Service Image: Image inside the services page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceImage")]
+		public virtual global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue ServiceImage => this.Value<global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue>("ServiceImage");
+
+		///<summary>
+		/// Service Lead In: Services Page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceLeadIn")]
+		public virtual string ServiceLeadIn => this.Value<string>("ServiceLeadIn");
+
+		///<summary>
+		/// Service Program 1: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram1")]
+		public virtual global::System.Web.IHtmlString ServiceProgram1 => this.Value<global::System.Web.IHtmlString>("ServiceProgram1");
+
+		///<summary>
+		/// Service Program 2: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram2")]
+		public virtual global::System.Web.IHtmlString ServiceProgram2 => this.Value<global::System.Web.IHtmlString>("ServiceProgram2");
+
+		///<summary>
+		/// Service Program 3: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram3")]
+		public virtual global::System.Web.IHtmlString ServiceProgram3 => this.Value<global::System.Web.IHtmlString>("ServiceProgram3");
+
+		///<summary>
+		/// Service Program 4: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram4")]
+		public virtual global::System.Web.IHtmlString ServiceProgram4 => this.Value<global::System.Web.IHtmlString>("ServiceProgram4");
+
+		///<summary>
+		/// Service Program 5: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram5")]
+		public virtual global::System.Web.IHtmlString ServiceProgram5 => this.Value<global::System.Web.IHtmlString>("ServiceProgram5");
+
+		///<summary>
+		/// Service Program 6: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram6")]
+		public virtual global::System.Web.IHtmlString ServiceProgram6 => this.Value<global::System.Web.IHtmlString>("ServiceProgram6");
+
+		///<summary>
+		/// Service Program 7: Contents of Services Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("ServiceProgram7")]
+		public virtual global::System.Web.IHtmlString ServiceProgram7 => this.Value<global::System.Web.IHtmlString>("ServiceProgram7");
 	}
 
 	/// <summary>Folder</summary>
