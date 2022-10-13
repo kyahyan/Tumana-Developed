@@ -6,8 +6,8 @@ using  Umbraco.Core.Models;
 using  Umbraco.Core.Models.PublishedContent;
 using  Umbraco.Web;
 using  Umbraco.ModelsBuilder.Embedded;
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "889c30bfb7d86872")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "7496a5a1b88126fd")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 
 // FILE: models.generated.cs
@@ -240,6 +240,27 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Brgy Hall Info Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("brgyHallInfoDescription")]
+		public virtual global::System.Web.IHtmlString BrgyHallInfoDescription => this.Value<global::System.Web.IHtmlString>("brgyHallInfoDescription");
+
+		///<summary>
+		/// Brgy Hall Information Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("brgyHallInformationImage")]
+		public virtual global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue BrgyHallInformationImage => this.Value<global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue>("brgyHallInformationImage");
+
+		///<summary>
+		/// Brgy Hall Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("brgyHallTitle")]
+		public virtual string BrgyHallTitle => this.Value<string>("brgyHallTitle");
 
 		///<summary>
 		/// Context
@@ -2301,6 +2322,88 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
 		[ImplementPropertyType("ServiceProgram7")]
 		public virtual global::System.Web.IHtmlString ServiceProgram7 => this.Value<global::System.Web.IHtmlString>("ServiceProgram7");
+	}
+
+	/// <summary>SubService</summary>
+	[PublishedModel("subService")]
+	public partial class SubService : PublishedContentModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new const string ModelTypeAlias = "subService";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SubService, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public SubService(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Sub Service Content 1: Description of a subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceContent1")]
+		public virtual global::System.Web.IHtmlString SubServiceContent1 => this.Value<global::System.Web.IHtmlString>("subServiceContent1");
+
+		///<summary>
+		/// Sub Service Content 2: Description of a subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceContent2")]
+		public virtual global::System.Web.IHtmlString SubServiceContent2 => this.Value<global::System.Web.IHtmlString>("subServiceContent2");
+
+		///<summary>
+		/// Sub Service Content 3: Description of a subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceContent3")]
+		public virtual global::System.Web.IHtmlString SubServiceContent3 => this.Value<global::System.Web.IHtmlString>("subServiceContent3");
+
+		///<summary>
+		/// Sub Service Content 4: Description of a subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceContent4")]
+		public virtual global::System.Web.IHtmlString SubServiceContent4 => this.Value<global::System.Web.IHtmlString>("subServiceContent4");
+
+		///<summary>
+		/// Sub Service Content 5: Description of a subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceContent5")]
+		public virtual global::System.Web.IHtmlString SubServiceContent5 => this.Value<global::System.Web.IHtmlString>("subServiceContent5");
+
+		///<summary>
+		/// Sub Service Image: Image of a Subservice
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceImage")]
+		public virtual global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue SubServiceImage => this.Value<global::Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValue>("subServiceImage");
+
+		///<summary>
+		/// Sub Service Lead In: Specific program inside a service
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceLeadIn")]
+		public virtual string SubServiceLeadIn => this.Value<string>("subServiceLeadIn");
+
+		///<summary>
+		/// Sub Service Tag: Tags inside Sub Service
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.18.1")]
+		[ImplementPropertyType("subServiceTag")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> SubServiceTag => this.Value<global::System.Collections.Generic.IEnumerable<string>>("subServiceTag");
 	}
 
 	/// <summary>Folder</summary>
